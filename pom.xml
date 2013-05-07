@@ -24,15 +24,20 @@
       <scala.artifactId>2.10</scala.artifactId>
    </properties>
 
-   <!--
-     <repositories>
-       <repository>
-         <id>scala-tools.org</id>
-         <name>Scala-Tools Maven2 Repository</name>
-         <url>http://scala-tools.org/repo-releases</url>
-       </repository>
-     </repositories>
+   <repositories>
+      <repository>
+         <id>spray</id>
+         <name>Spray.io Repository</name>
+         <url>http://repo.spray.io</url>
+      </repository>
+      <repository>
+         <id>spray-nightlies</id>
+         <name>Spray.io Nightly Repository</name>
+         <url>http://nightlies.spray.io</url>
+      </repository>
+   </repositories>
 
+   <!--
      <pluginRepositories>
        <pluginRepository>
          <id>scala-tools.org</id>
@@ -52,6 +57,17 @@
          <groupId>org.scalaz</groupId>
          <artifactId>scalaz-core_${scala.artifactId}</artifactId>
          <version>7.0.0</version>
+      </dependency>
+
+      <dependency>
+         <groupId>io.spray</groupId>
+         <artifactId>spray-can</artifactId>
+         <version>1.1-20130507</version>
+      </dependency>
+      <dependency>
+         <groupId>com.typesafe.akka</groupId>
+         <artifactId>akka-actor_${scala.artifactId}</artifactId>
+         <version>2.1.2</version>
       </dependency>
 
       <!-- Test -->
