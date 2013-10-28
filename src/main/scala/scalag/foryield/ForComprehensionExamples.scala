@@ -1,5 +1,7 @@
 package scalag.foryield
 
+import java.util
+
 /**
  * // TODO: Document this
  * @author Galder Zamarreño
@@ -7,16 +9,36 @@ package scalag.foryield
  */
 object ForComprehensionExamples {
 
-   def main(args : Array[String]) {
-      val x = "galder"
-      (for {
-         dm <- Some(x)
-         location <- Some(dm)
-      } yield {
-         location.toString
-      }).getOrElse {
-         null
-      }
-   }
+  def main(args: Array[String]) {
+    val x = "galder"
+    (for {
+      dm <- Some(x)
+      location <- Some(dm)
+    } yield {
+      location.toString
+    }).getOrElse {
+      null
+    }
+
+    println(util.Arrays.toString(adults(List(1, 30, 19))))
+    println(util.Arrays.toString(adults2(List(60, 10, 34))))
+  }
+
+  def adults(people: List[Int]): Array[Int] = {
+    val adults =
+      for {
+        p <- people
+        if p >= 18
+      } yield p
+
+    adults.toArray // <- Results in 2nd iteration!! Not good :(
+  }
+
+  def adults2(people: List[Int]): Array[Int] = {
+    (for {
+      p <- people
+      if p >= 18
+    } yield p)(collection.breakOut)
+  }
 
 }
