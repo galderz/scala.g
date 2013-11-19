@@ -26,14 +26,14 @@ object DemuxApp3 extends App {
     c match {
       case Nil => out.head.signal = in.signal
       case x::Nil =>
-        out.head.signal = in.signal && !x.signal
-        out.tail.head.signal = in.signal && x.signal
+        out.tail.head.signal = in.signal && !x.signal
+        out.head.signal = in.signal && x.signal
       case x::xs =>
         val a1 = new Wire(in.signal && !x.signal)
         val a2 = new Wire(in.signal && x.signal)
         val halved = out.splitAt(out.size / 2)
-        demux(a1, xs, halved._1)
-        demux(a2, xs, halved._2)
+        demux(a1, xs, halved._2)
+        demux(a2, xs, halved._1)
     }
 
 
@@ -86,7 +86,7 @@ object DemuxApp3 extends App {
   in = new Wire(true)
   c = List(new Wire(false))
   demux(in, c, out)
-  assert(out === List(new Wire(true), new Wire(false)))
+  assert(out === List(new Wire(false), new Wire(true)))
 
   in = new Wire(false)
   c = List(new Wire(true))
@@ -96,7 +96,7 @@ object DemuxApp3 extends App {
   in = new Wire(true)
   c = List(new Wire(true))
   demux(in, c, out)
-  assert(out === List(new Wire(false), new Wire(true)))
+  assert(out === List(new Wire(true), new Wire(false)))
 
   // 2 control wires
   out = List(new Wire(false), new Wire(false), new Wire(false), new Wire(false))
@@ -109,24 +109,24 @@ object DemuxApp3 extends App {
   in = new Wire(true)
   c = List(new Wire(false), new Wire(false))
   demux(in, c, out)
-  assert(out === List(new Wire(true), new Wire(false), new Wire(false), new Wire(false)))
-
-  demux(new Wire(false), List(new Wire(false), new Wire(true)), out)
-  assert(out === List(new Wire(false), new Wire(false), new Wire(false), new Wire(false)))
+  assert(out === List(new Wire(false), new Wire(false), new Wire(false), new Wire(true)))
 
   demux(new Wire(true), List(new Wire(false), new Wire(true)), out)
+  assert(out === List(new Wire(false), new Wire(false), new Wire(true), new Wire(false)))
+
+  demux(new Wire(true), List(new Wire(true), new Wire(false)), out)
   assert(out === List(new Wire(false), new Wire(true), new Wire(false), new Wire(false)))
+
+  demux(new Wire(true), List(new Wire(true), new Wire(true)), out)
+  assert(out === List(new Wire(true), new Wire(false), new Wire(false), new Wire(false)))
 
   demux(new Wire(false), List(new Wire(true), new Wire(false)), out)
   assert(out === List(new Wire(false), new Wire(false), new Wire(false), new Wire(false)))
 
-  demux(new Wire(true), List(new Wire(true), new Wire(false)), out)
-  assert(out === List(new Wire(false), new Wire(false), new Wire(true), new Wire(false)))
-
   demux(new Wire(false), List(new Wire(true), new Wire(true)), out)
   assert(out === List(new Wire(false), new Wire(false), new Wire(false), new Wire(false)))
 
-  demux(new Wire(true), List(new Wire(true), new Wire(true)), out)
-  assert(out === List(new Wire(false), new Wire(false), new Wire(false), new Wire(true)))
+  demux(new Wire(false), List(new Wire(false), new Wire(true)), out)
+  assert(out === List(new Wire(false), new Wire(false), new Wire(false), new Wire(false)))
 
 }
