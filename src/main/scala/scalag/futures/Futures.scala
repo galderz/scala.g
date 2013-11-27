@@ -1,4 +1,4 @@
-package scalag.concurrent
+package scalag.futures
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.collection.mutable

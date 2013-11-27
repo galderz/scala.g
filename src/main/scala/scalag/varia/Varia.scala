@@ -2,6 +2,7 @@ package scalag.varia
 
 import scala.math._
 import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Failure, Success, Try}
 
 /**
@@ -14,13 +15,12 @@ object Varia extends App {
   def randomBelow(i: Int) = (random * i).toInt
 
   {
-    object TryFactory {
-      def apply[T](f: Future[T]): Future[Try[T]] = {
-        // f.map(x => Try(x)) <-- does not work because it doesn't map the failure
-        f.map(s => Success(s)) recover { case t => Failure(t) }
-      }
-    }
-
+//    object TryFactory {
+//      def apply[T](f: Future[T]): Future[Try[T]] = {
+//        // f.map(x => Try(x)) <-- does not work because it doesn't map the failure
+//        f.map(s => Success(s)) recover { case t => Failure(t) }
+//      }
+//    }
   }
 
   {
