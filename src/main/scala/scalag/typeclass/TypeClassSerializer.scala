@@ -22,9 +22,9 @@ object TypeClassSerializer {
     def serialize(t: T): (String, ContentType)
   }
 
-  // Make sure default implicit conversions have the lowest possible priority
-  object Serializer extends LowPriorityDefaultSerializerImplicits{
-  }
+//  // Make sure default implicit conversions have the lowest possible priority
+//  object Serializer extends LowPriorityDefaultSerializerImplicits{
+//  }
 
   private trait LowPriorityDefaultSerializerImplicits {
     implicit def stringSerializer = new Serializer[String] {
