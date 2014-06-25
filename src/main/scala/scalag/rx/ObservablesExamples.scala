@@ -1,4 +1,4 @@
-package scalag.observables
+package scalag.rx
 
 import rx.lang.scala.Observable
 import scala.concurrent.duration._

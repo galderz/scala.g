@@ -41,4 +41,15 @@ object ForComprehensionExamples {
     } yield p)(collection.breakOut)
   }
 
+  def boo(): Option[Boolean] = {
+    for {
+      x <- Some("he")
+      y <- Option(x)
+      z <- Option(x)
+      if !z.isEmpty
+    } yield {
+      true
+    }
+  }
+
 }
