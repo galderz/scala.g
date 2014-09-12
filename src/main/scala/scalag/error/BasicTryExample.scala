@@ -1,6 +1,6 @@
 package scalag.error
 
-import util.Try
+import scala.util.{Success, Failure, Try}
 
 /**
  * // TODO: Document this
@@ -17,7 +17,7 @@ object BasicTryExample {
          int1 + int2
       }
 
-      println(sumTry)
+//      println(sumTry)
 
       val errorSumTry = for {
          int1 <- Try(Integer.parseInt("a"))
@@ -26,7 +26,48 @@ object BasicTryExample {
          int1 + int2
       }
 
-      println(errorSumTry)
+//      println(errorSumTry)
+
+
+     def toInt(num: String): Try[Int] = {
+       //Success(num.toInt)
+       Try {
+         num.toInt
+       }
+     }
+
+     toInt("aaa").recover {
+       case _ => println("Unexpected")
+     }
+
+     Try("aaa".toInt).recover {
+       case _ => println("Unexpected")
+     }
+
+//     Try(throw new NoClassDefFoundError("booo")).recover {
+//       case _ => println("Unexpected")
+//     }
+
+     classloadingTry(throw new NoClassDefFoundError("booo")).recover {
+       case _ => println("Unexpected")
+     }
+
+     def classloadingTry[T](r: => T): Try[T] =
+       try Success(r) catch {
+         case e: Throwable => Failure(e)
+       }
+
+     //     Try(Failure(throw new NoClassDefFoundError("boo"))).recover {
+//       case n: NoClassDefFoundError => print("saved!")
+//       case _ => println("Something else")
+//     }
+
+//     Try {
+//        throw new NoClassDefFoundError("boo")
+//      }.recover {
+//        case n: NoClassDefFoundError =>
+//          print("saved!")
+//      }
    }
 
 }
