@@ -2,6 +2,9 @@ package scalag.foryield
 
 import java.util
 
+import scala.concurrent.{ExecutionContext, Future}
+import ExecutionContext.Implicits.global
+
 /**
  * // TODO: Document this
  * @author Galder Zamarreño
@@ -18,6 +21,15 @@ object ForComprehensionExamples {
       location.toString
     }).getOrElse {
       null
+    }
+
+    {for {
+      dm <- Future(Some(x))
+      location <- Future(Some(dm))
+    } yield {
+      location.get.toString
+    }} recover {
+      case e => 0
     }
 
     println(util.Arrays.toString(adults(List(1, 30, 19))))
