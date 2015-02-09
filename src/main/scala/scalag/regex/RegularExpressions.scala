@@ -17,6 +17,8 @@ object RegularExpressions {
       println(pattern.findFirstIn("org.infinispan.util").isDefined)
       println(pattern.findFirstIn("org.infinispan.test").isDefined)
       println(pattern.findFirstIn("org.infinispan.marshalling").isDefined)
+
+      println("[0-9_]*".r.findPrefixOf("4aaa"))
    }
 
 }
