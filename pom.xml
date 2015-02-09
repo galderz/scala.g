@@ -22,6 +22,7 @@
       <encoding>UTF-8</encoding>
       <scala.version>2.10.3</scala.version>
       <scala.artifactId>2.10</scala.artifactId>
+      <version.scalaz>7.0.6</version.scalaz>
    </properties>
 
    <repositories>
@@ -34,6 +35,11 @@
          <id>spray-nightlies</id>
          <name>Spray.io Nightly Repository</name>
          <url>http://nightlies.spray.io</url>
+      </repository>
+      <repository>
+         <id>scalaz</id>
+         <name>Scalaz Bintray Repo</name>
+         <url>http://dl.bintray.com/scalaz/releases</url>
       </repository>
    </repositories>
 
@@ -85,9 +91,9 @@
          <version>2.1.2</version>
       </dependency>
       <dependency>
-         <groupId>org.scala-lang</groupId>
+         <groupId>org.scala-lang.modules</groupId>
          <artifactId>scala-pickling_${scala.artifactId}</artifactId>
-         <version>0.8.0-SNAPSHOT</version>
+         <version>0.10.0</version>
       </dependency>
       <dependency>
          <groupId>org.jboss.marshalling</groupId>
@@ -138,6 +144,32 @@
          <version>1.2.0</version>
       </dependency>
 
+      <dependency>
+         <groupId>org.scalaz</groupId>
+         <artifactId>scalaz-core_${scala.artifactId}</artifactId>
+         <version>${version.scalaz}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.scalaz</groupId>
+         <artifactId>scalaz-effect_${scala.artifactId}</artifactId>
+         <version>${version.scalaz}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.scalaz</groupId>
+         <artifactId>scalaz-typelevel_${scala.artifactId}</artifactId>
+         <version>${version.scalaz}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.scalaz</groupId>
+         <artifactId>scalaz-scalacheck-binding_${scala.artifactId}</artifactId>
+         <version>${version.scalaz}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.scalaz.stream</groupId>
+         <artifactId>scalaz-stream_${scala.artifactId}</artifactId>
+         <version>0.4.1</version>
+      </dependency>
+
    </dependencies>
 
    <build>
@@ -182,4 +214,5 @@
          </plugin>
       </plugins>
    </build>
+
 </project>

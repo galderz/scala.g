@@ -1,6 +1,7 @@
 package g.scala
 
 import scala.concurrent.duration.Duration
+import scala.concurrent.duration._
 
 // from finagle
 object EasilyExtensibleConfiguration extends App {

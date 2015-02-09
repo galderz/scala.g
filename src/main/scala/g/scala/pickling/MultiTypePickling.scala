@@ -1,7 +1,7 @@
 package g.scala.pickling
 
 import scala.pickling._
-import binary._
+import scala.pickling.Defaults._, scala.pickling.json._
 
 /**
  * @author Galder Zamarreño

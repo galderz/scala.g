@@ -1,6 +1,6 @@
 package g.scala.fluent
 
-import javag.fluent.C
+import g.java.C
 
 import g.java.C
 import g.scala.AsJava
