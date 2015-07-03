@@ -20,13 +20,13 @@ object Streams extends App {
 
   val asyncInts: stream.Process[Task, Int] = scalaz.stream.Process.eval(intTask).repeat
 
-  private val newTask = for {
-    intNum <- asyncInts.toTask
-  } yield {
-    print(intNum)
-  }
-
-  newTask.run
+//  private val newTask = for {
+//    intNum <- asyncInts.toTask
+//  } yield {
+//    print(intNum)
+//  }
+//
+//  newTask.run
 
   def x(i: Int): Either[Throwable, Int] =
     if (i == 0) Left(new Exception(i.toString))

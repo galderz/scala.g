@@ -10,14 +10,16 @@ object Application extends App {
 
   import CharToy._
 
-  val subroutine = output('A')
-  val program = for {
-    _ <- subroutine
-    _ <- bell
-    _ <- done
-  } yield ()
-
-  // S $ program
-  print(showProgram(program))
+// Not compiling...
+//
+//  val subroutine = output('A')
+//  val program = for {
+//    _ <- subroutine
+//    _ <- bell
+//    _ <- done
+//  } yield ()
+//
+//  // S $ program
+//  print(showProgram(program))
 
 }

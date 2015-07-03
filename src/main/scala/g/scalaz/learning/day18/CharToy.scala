@@ -22,13 +22,17 @@ object CharToy {
     }
   }
 
-  private def liftF[F[+_]: Functor, R](command: F[R]): Free[F, R] =
-    Free.Suspend[F, R](Functor[F].map(command) { Free.Return[F, R](_) })
+// Not compiling...
+//
+//  private def liftF[F[+_]: Functor, R](command: F[R]): Free[F, R] =
+//    Free.Suspend[F, R](Functor[F].map(command) { Free.Return[F, R](_) })
 
-  def output(a: Char): Free[CharToy, Unit] = liftF[CharToy, Unit](CharOutput(a, ()))
-  def bell: Free[CharToy, Unit] = liftF[CharToy, Unit](CharBell(()))
-  def done: Free[CharToy, Unit] = liftF[CharToy, Unit](CharDone())
-  def pointed[A](a: A) = Free.Return[CharToy, A](a)
+// Not compiling...
+//
+//  def output(a: Char): Free[CharToy, Unit] = liftF[CharToy, Unit](CharOutput(a, ()))
+//  def bell: Free[CharToy, Unit] = liftF[CharToy, Unit](CharBell(()))
+//  def done: Free[CharToy, Unit] = liftF[CharToy, Unit](CharDone())
+//  def pointed[A](a: A) = Free.Return[CharToy, A](a)
 
   def showProgram[R: Show](p: Free[CharToy, R]): String =
     p.resume.fold({

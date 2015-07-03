@@ -31,7 +31,10 @@ object Applicatives extends App {
 
     // Extract values from containers and apply them to a single function
     S $ (3.some |@| 5.some) {_ + _} // leads to an allocation of wrapper object
-    S $ Apply[Option].map2(3.some, 5.some) {_ + _} // alternative version without wrapper allocation
+
+// Not compiling...
+//
+//    S $ Apply[Option].map2(3.some, 5.some) {_ + _} // alternative version without wrapper allocation
 
     // LYAHFGG:
     // You can think of <*> as a sort of a beefed-up fmap. Whereas fmap takes a function and a functor and
